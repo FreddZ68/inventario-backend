@@ -56,20 +56,19 @@ function generarQR(materialId, nombre) {
 // Los valores por defecto (localhost, 3308, etc.) solo se usan si trabajas
 // en tu máquina local con XAMPP.
 const conexion = mysql.createConnection({
-  host: process.env.MYSQLHOST,
-  user: process.env.MYSQLUSER,
-  password: process.env.MYSQLPASSWORD,
-  database: process.env.MYSQLDATABASE,
+  host: process.env.MYSQLHOST || 'localhost',
+  user: process.env.MYSQLUSER || 'root',
+  password: process.env.MYSQLPASSWORD || '',
+  database: process.env.MYSQLDATABASE || 'railway',
   port: process.env.MYSQLPORT || 3306
 });
 
-conexion.connect(err => {
-    if (err) throw err;
-    console.log("Conectado a la base de datos MySQL/MariaDB");
-});
-
-app.get("/", (req, res) => {
-    res.send("Bienvenido a Inventario API");
+conexion.connect((err) => {
+  if (err) {
+    console.error('Error conectando a la base de datos:', err);
+    return;
+  }
+  console.log('Bienvendio a Inventario');
 });
 
 
