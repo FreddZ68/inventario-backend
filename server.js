@@ -56,11 +56,11 @@ function generarQR(materialId, nombre) {
 // Los valores por defecto (localhost, 3308, etc.) solo se usan si trabajas
 // en tu máquina local con XAMPP.
 const conexion = mysql.createConnection({
-    host: process.env.MYSQLHOST || "localhost",
-    port: process.env.MYSQLPORT || 3308,
-    user: process.env.MYSQLUSER || "root",
-    password: process.env.MYSQLPASSWORD || "",
-    database: process.env.MYSQLDATABASE || "inventario_db"
+  host: process.env.MYSQLHOST,
+  user: process.env.MYSQLUSER,
+  password: process.env.MYSQLPASSWORD,
+  database: process.env.MYSQLDATABASE,
+  port: process.env.MYSQLPORT || 3306
 });
 
 conexion.connect(err => {
